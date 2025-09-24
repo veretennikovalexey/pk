@@ -1,4 +1,6 @@
-Hello, ROBERT !
+# stepik_exam_python
+
+https://github.com/Musador13/stepik_exam_python
 
 # pk
 
