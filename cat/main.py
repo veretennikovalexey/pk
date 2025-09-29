@@ -11,6 +11,11 @@ pygame.mixer.init()  # Инициализация звуков
 # Настройки окна
 WIDTH, HEIGHT = 800, 600
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+# WIN = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+# WIN = pygame.display.set_mode((0, 0), pygame.RESIZABLE)
+
+WIDTH, HEIGHT = WIN.get_size()
+
 pygame.display.set_caption("Nyan Cat")
 FONT = "Arial"
 
