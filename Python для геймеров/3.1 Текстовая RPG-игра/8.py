@@ -35,24 +35,27 @@ payment_copper = int(input()) # Плата за вход в город медь
 
 can_enter = False
 
+new_name = input() # Герой новое имя (строка)
+
 magic_damage = round( damage * 1.5 - guard_armor, 1 )
 guard_health -= magic_damage
 
 guard_attack = round( base_guard_attack * 1.2 - armor, 1 )
 health -= guard_attack
 
-cooper_weight = 25.6
-silver_weight = 16.40
-gold_weight = 31.103
+COOPER_WEIGHT = 25.6
+SILVER_WEIGHT = 16.40
+GOLD_WEIGHT = 31.103
 
-total_weight_before = round(copper_coins * cooper_weight, 2)
+total_weight_before = round(copper_coins * COOPER_WEIGHT, 2)
 
 gold_coins = copper_coins // 336
 copper_coins %= 336
 
 silver_coins = copper_coins // 28
 copper_coins %= 28
-total_weight_after = round(gold_coins * gold_weight + silver_coins * silver_weight + copper_coins * cooper_weight, 2)
+
+total_weight_after = round(gold_coins * GOLD_WEIGHT + silver_coins * SILVER_WEIGHT + copper_coins * COOPER_WEIGHT, 2)
 
 distance = ( (x2-x1) ** 2 + (y2-y1) ** 2 ) ** 0.5
 distance = round( distance, 2 )
@@ -62,6 +65,17 @@ profit = [ grass1_amnt * grass1_cost,
            grass3_amnt * grass3_cost ]
 
 can_enter = gold_coins >= payment_gold and silver_coins >= payment_silver and copper_coins >= payment_copper
+
+gold = gold_coins - payment_gold
+silver = silver_coins - payment_silver
+copper = copper_coins - payment_copper
+copper += max(profit) # продали травы 150 монет
+gold += copper // 336
+copper %= 336
+silver += copper // 28
+copper %= 28
+
+total_weight = round(gold * GOLD_WEIGHT + silver * SILVER_WEIGHT + copper * COOPER_WEIGHT, 2)
 
 print( F'''\
 === Магическое противостояние ===
@@ -88,5 +102,12 @@ print( F'''\
 === Дай грош – не отгребёшь ===
 
 Требуемая сумма: Золотые: {payment_gold}, Серебряные: {payment_silver}, Медные: {payment_copper}
-Средств хватает: {can_enter}''' )
+Средств хватает: {can_enter}
+
+=== Итог приключения ===
+
+Новое имя героя: {new_name}
+Оставшееся здоровье: {health}
+Золотые: {gold}, Серебряные: {silver}, Медные: {copper}
+Общий вес инвентаря: {total_weight} единиц''' )
 
