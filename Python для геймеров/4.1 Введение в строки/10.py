@@ -1,0 +1,6 @@
+_ = input()
+print( 1 * _ )
+print( 2 * _ )
+print( 3 * _ )
+print( 4 * _ )
+print( 5 * _ )
