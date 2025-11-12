@@ -174,7 +174,7 @@ class HappinessStar:
     def __init__(self):
         self.x = WIDTH + 50
         self.y = random.randint(50, HEIGHT - 50)
-        self.speed = 10
+        self.speed = 1
         self.size = 15
         self.rect = pygame.Rect(self.x, self.y, self.size, self.size)
         self.spawn_time = pygame.time.get_ticks()
