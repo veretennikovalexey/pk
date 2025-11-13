@@ -1,0 +1,66 @@
+# свойства (атрибуты)
+
+# методы
+
+# messaging - обмен сообщениями
+
+# Пример 1. Один объект изменяет другого
+
+class Fighter:
+    def __init__(self, name, health, power):
+        self.name = name
+        self.health = health
+        self.power = power
+
+    def attack(self, other):
+        print(f"{self.name} наносит удар по {other.name} силой {self.power}!")
+        other.health -= self.power
+
+subzero = Fighter("Саб-Зиро", 100, 25)
+scorpion = Fighter("Скорпион", 100, 30)
+
+subzero.attack(scorpion)
+scorpion.attack(subzero)
+subzero.attack(scorpion)
+
+# Саб-Зиро наносит удар по Скорпион силой 25!
+# У Скорпион осталось 75 здоровья.
+
+# Скорпион наносит удар по Саб-Зиро силой 30!
+# У Саб-Зиро осталось 70 здоровья.
+
+# Саб-Зиро наносит удар по Скорпион силой 25!
+# У Скорпион осталось 50 здоровья.
+
+# Пример 2. Взаимодействие двух классов
+
+class Terrorist:
+    def __init__(self, name, damage):
+        self.name = name
+        self.damage = damage
+
+    def attack(self, enemy):
+        print(f"{self.name} бросает гранату в {enemy.name}!")
+        enemy.health -= self.damage
+        if enemy.health <= 0:
+            enemy.health = 0
+            print(f"{enemy.name} выбыл из игры!")
+        else:
+            print(f"У {enemy.name} осталось {enemy.health} HP.\n")
+
+class CounterTerrorist:
+    def __init__(self, name, health):
+        self.name = name
+        self.health = health            
+
+t1 = Terrorist("Плохиш", 45)
+ct1 = CounterTerrorist("Норм челик", 100) # 90
+
+t1.attack(ct1)
+t1.attack(ct1)
+
+# Плохиш бросает гранату в Норм челик!
+# У Норм челик осталось 55 HP.
+
+# Плохиш бросает гранату в Норм челик!
+# Норм челик выбыл из игры!

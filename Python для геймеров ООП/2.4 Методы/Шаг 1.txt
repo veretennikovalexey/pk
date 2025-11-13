@@ -1,0 +1,116 @@
+# Пример 1. Простейший метод
+
+class Character:
+    def __init__(self, name="Артур", race="человек", health=100, power=10):
+        self.name = name
+        self.race = race
+        self.health = health
+        self.power = power
+
+    def say_hello(self):
+        print(f"Привет! Меня зовут {self.name}. Я {self.race}.")
+
+hero1 = Character("Белла", "эльф")
+hero2 = Character("Зорг", "орк")
+
+hero1.say_hello()
+hero2.say_hello()
+
+# Привет! Меня зовут Белла. Я эльф.
+# Привет! Меня зовут Зорг. Я орк.
+
+
+# Пример 2. Метод с действием
+
+class Character:
+    def __init__(self, name, race, health=100, power=10):
+        self.name = name
+        self.race = race
+        self.health = health
+        self.power = power
+
+    def attack(self, enemy):
+        print(f"{self.name} атакует {enemy.name} и наносит {self.power} урона!")
+        enemy.health -= self.power
+
+hero1 = Character("Артур", "человек", 100, 15)
+hero2 = Character("Зорг", "орк", 120, 10)
+
+hero1.attack(hero2)
+print(hero2.health)
+
+# Артур атакует Зорга и наносит 15 урона!
+# 105
+
+
+# Пример 3. Метод, который возвращает значение
+
+class Character:
+    def __init__(self, name, race, health=100, power=10):
+        self.name = name
+        self.race = race
+        self.health = health
+        self.power = power
+
+    def is_alive(self):
+        return self.health > 0
+
+hero = Character("Артур", "человек", health=0)
+print(hero.is_alive())
+
+# False
+
+
+# Пример 4. Метод, который лечит персонажа
+
+class Character:
+    def __init__(self, name, race, health=100, power=10):
+        self.name = name
+        self.race = race
+        self.health = health
+        self.power = power
+
+    def heal(self, amount):
+        self.health += amount
+        print(f"{self.name} лечится на {amount} очков. Теперь у него {self.health} здоровья.")
+
+hero = Character("Белла", "эльф", 60, 12)
+hero.heal(30)
+
+# Белла лечится на 30 очков. Теперь у него 90 здоровья.
+
+
+# Пример 5. Метод, который показывает информацию
+
+class Character:
+    def __init__(self, name, race, health=100, power=10):
+        self.name = name
+        self.race = race
+        self.health = health
+        self.power = power
+
+    def show_info(self):
+        print(f"Имя: {self.name}")
+        print(f"Раса: {self.race}")
+        print(f"Здоровье: {self.health}")
+        print(f"Сила: {self.power}")
+        print("─" * 20)
+
+hero1 = Character("Артур", "человек", 100, 15)
+hero2 = Character("Белла", "эльф", 80, 12)
+
+hero1.show_info()
+hero2.show_info()
+
+# Имя: Артур
+# Раса: человек
+# Здоровье: 100
+# Сила: 15
+# ────────────────────
+# Имя: Белла
+# Раса: эльф
+# Здоровье: 80
+# Сила: 12
+# ────────────────────
+
+

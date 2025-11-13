@@ -1,0 +1,8 @@
+def say_hello(self):
+    print("Привет!")
+
+class Character:
+    def say_hello(self, name):
+        print(f"Привет! Меня зовут {self.name}.")
+        
+            
