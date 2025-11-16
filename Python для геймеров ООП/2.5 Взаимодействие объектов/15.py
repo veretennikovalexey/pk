@@ -12,17 +12,13 @@ class Zombie:
         print(f'{self.name} кусает {plant.name}!')
         plant.hp = max(plant.hp - self.damage, 0)
         print(f'У {plant.name} осталось {plant.hp} прочности.')
+        return plant.hp > 0
 
-def bite(zombie, plant):
-    zombie.attack(plant)
-    return plant.hp > 0
+*plant_name , plant_hp  = input().split() # подсмотрел у ребят
+*zombie_name, zombie_hp = input().split()
 
-plant = input().rsplit(maxsplit=1) # нейросеть
-zombie = input().rsplit(maxsplit=1)
+p = Plant (' '.join(plant_name ), int(plant_hp ))
+z = Zombie(' '.join(zombie_name), int(zombie_hp))
 
-p = Plant(plant[0], int(plant[1]))
-z = Zombie(zombie[0], int(zombie[1]))
-
-while bite(z, p):
+while z.attack(p):
     pass
-
