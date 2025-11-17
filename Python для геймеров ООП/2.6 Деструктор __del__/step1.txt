@@ -1,0 +1,17 @@
+# Деструктор __del__
+
+class Character:
+    def __init__(self, name):
+        self.name = name
+        print(f"Создан персонаж {self.name}")
+
+    def __del__(self):
+        print(f"Персонаж {self.name} уничтожен")
+
+hero1 = Character("Артур")
+hero2 = Character("Белла")
+
+del hero1
+print("Конец программы")
+
+# with ... as

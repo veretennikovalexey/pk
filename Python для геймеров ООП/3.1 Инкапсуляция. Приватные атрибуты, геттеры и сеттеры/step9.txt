@@ -1,0 +1,37 @@
+# get получать
+# set устанавливать
+
+# Пример 1. Без методов доступа
+
+class Character:
+    def __init__(self, name, health):
+        self.__name = name
+        self.__health = health
+
+hero = Character("Карлах", 14)
+print(hero.__health)
+
+# AttributeError: 'Character' object has no attribute '__health'
+
+class Character:
+    def __init__(self, name, health):
+        self.__name = name
+        self.__health = health
+
+    def get_health(self):
+        """Публичный метод для чтения здоровья."""
+        return self.__health
+
+    def set_health(self, value):
+        """Публичный метод для безопасного изменения здоровья."""
+        if value < 0:
+            print("Здоровье не может быть отрицательным!")
+        else:
+            self.__health = value
+            print(f"Новое здоровье: {self.__health}")
+
+hero = Character("Карлах", 15)
+
+print(hero.get_health())
+hero.set_health(25)
+hero.set_health(-10)
