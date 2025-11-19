@@ -6,6 +6,6 @@ class Hero:
     def name(self):
         return self.__name
     
-hero = Hero("Зяблик")
-print(hero.name)
-hero.name = "KillByaz"
+# hero = Hero("Зяблик")
+# print(hero.name)
+# hero.name = "KillByaz"
