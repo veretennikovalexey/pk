@@ -1,12 +1,12 @@
 class Client:
-    def __init__(self, name, surname, birth_day, email, address, password, secret_word):
-        self.__secret_word = secret_word
-        self.__password = password
-        self.birth_day = birth_day
-        self.address = address
-        self.surname = surname
-        self.email = email
+    def __init__(self, name, surname, birth_date, email, address, password, secret_word):
         self.name = name       
+        self.surname = surname
+        self.birth_date = birth_date
+        self.email = email
+        self.address = address
+        self.__password = password
+        self.__secret_word = secret_word
 
     def change_password(self):
         pass    
