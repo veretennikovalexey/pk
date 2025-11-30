@@ -9,7 +9,7 @@ pygame.mixer.init()  # Инициализация звуков
 
 # КОНСТАНТЫ
 # Настройки окна
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 1000, 1000
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 # WIN = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 # WIN = pygame.display.set_mode((0, 0), pygame.RESIZABLE)

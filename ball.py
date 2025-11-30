@@ -10,7 +10,7 @@ pygame.display.set_caption("Физические шары")
 
 clock = pygame.time.Clock()
 
-gravity = 0.2
+gravity = 0
 bounce = 0.8
 
 def random_color():
@@ -21,8 +21,8 @@ def random_color():
     )
 
 balls = []
-for _ in range(20):
-    radius = random.randint(50, 75)
+for _ in range(5):
+    radius = random.randint(1, 100)
     x = random.randint(radius, WIDTH - radius)
     y = random.randint(radius, HEIGHT - radius)
     dx = random.choice([i / 2 for i in range(-10, 11) if i != 0])
