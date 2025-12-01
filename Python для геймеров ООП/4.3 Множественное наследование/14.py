@@ -40,3 +40,10 @@ class Multiplier2x(Enhancement):
         print('Удвоитель очков! Множитель увеличен в 2 раза!')
         player.multiplier *= 2
         super().use(player)        
+
+
+class MegaBoost(SuperSneakers, Jetpack, CoinMagnet, Multiplier2x):
+    def activate(self, player):
+        print('Игрок собирает Мега-улучшение!')    
+        super().use(player)
+        player.show_stats()
