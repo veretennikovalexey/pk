@@ -2,7 +2,7 @@ import tkinter as tk
 
 # Настройки
 GRID_SIZE = 16
-GRID_COUNT = 32
+GRID_COUNT = 50
 cells = {}
 draw_color = "black"
 running = False  # флаг работы игры
