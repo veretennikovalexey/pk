@@ -134,7 +134,7 @@ elements = [
     (89, "Ac",9,3,    "actin", "+3"),
     (90, "Th",9,4,    "actin", "+4"),
     (91, "Pa",9,5,    "actin", "+5"),
-    (92, "U", 9,6,    "actin", "+6 / +4 / +5"),
+    (92, "U", 9,6,    "actin", "+6 +4 +5"),
     (93, "Np",9,7,    "actin", "+3 / +5"),
     (94, "Pu",9,8,    "actin", "+3 / +4"),
     (95, "Am",9,9,    "actin", "+3"),
@@ -169,9 +169,9 @@ for z, sym, period, group, typ, ox in elements:
     pos_map[(row, col)] = {"Z": z, "symbol": sym, "type": typ, "ox": ox}
 
 # Шрифты
-base_font_size = min(cell_w, cell_h) // 2  # размер для символа
-symbol_font = pygame.font.SysFont(None, base_font_size, bold=True)
-ox_font = pygame.font.SysFont(None, max(10, base_font_size // 2))
+base_font_size = 22  # размер для символа
+symbol_font = pygame.font.SysFont( 'verdana', base_font_size )
+ox_font = pygame.font.SysFont( 'verdana', 10 )
 
 # Цвет текста
 TEXT_COLOR = (10, 10, 10)
@@ -192,7 +192,7 @@ def draw_cell(r, c, rect, data):
     sym_rect = sym_surf.get_rect()
     # располагать так: центр клетки, но чуть левее
     sym_rect.centery = rect.centery
-    sym_rect.centerx = rect.left + rect.width * 0.45
+    sym_rect.centerx = rect.centerx
     screen.blit(sym_surf, sym_rect)
 
     # степень окисления — справа от символа, в 2 раза меньший шрифт (ox_font)
@@ -200,8 +200,13 @@ def draw_cell(r, c, rect, data):
     ox_surf = ox_font.render(ox, True, TEXT_COLOR)
     ox_rect = ox_surf.get_rect()
     # справа от символа, выровнять по центру вертикали
-    ox_rect.centery = rect.centery
-    ox_rect.left = sym_rect.right + 6
+
+    ox_rect.centerx = rect.centerx
+    ox_rect.top = sym_rect.bottom 
+    
+    # ox_rect.centery = rect.centery
+    # ox_rect.left = sym_rect.right + 6
+
     # если выходит за правый край — сдвинуть влево
     if ox_rect.right > rect.right - 6:
         ox_rect.right = rect.right - 6
